@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://vsqnn81eosqw"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_quawc"]
+[ext_resource type="Texture2D" uid="uid://bndhuvvns524u" path="res://assets/Adventurer Female Sprite Sheet.png" id="2_8l20m"]
+[ext_resource type="PackedScene" path="res://components/input_component.tscn" id="3_47x5d"]
+[ext_resource type="PackedScene" path="res://components/movement_component.tscn" id="4_e2qbd"]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input_cmp", "movement_cmp")]
+script = ExtResource("1_quawc")
+input_cmp = NodePath("InputComponent")
+movement_cmp = NodePath("MovementComponent")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_8l20m")
+hframes = 9
+vframes = 7
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="InputComponent" parent="." node_paths=PackedStringArray("body") instance=ExtResource("3_47x5d")]
+body = NodePath("..")
+
+[node name="MovementComponent" parent="." instance=ExtResource("4_e2qbd")]
+speed = 180
