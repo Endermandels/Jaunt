@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0kqbjlgyy4cb"]
+[gd_scene load_steps=7 format=3 uid="uid://d0kqbjlgyy4cb"]
 
 [ext_resource type="Texture2D" uid="uid://cuvitccobx3pf" path="res://assets/Cat Sprite Sheet.png" id="1_fs1jx"]
+[ext_resource type="PackedScene" uid="uid://cdgqieen0fywu" path="res://scenes/exclamation_mark.tscn" id="2_n4m1l"]
+[ext_resource type="PackedScene" uid="uid://boa04w86lhmls" path="res://components/target_detector.tscn" id="3_vgd13"]
 
 [sub_resource type="Animation" id="Animation_0tkq5"]
 resource_name = "idle"
@@ -49,8 +51,14 @@ offset = Vector2(0, -16)
 hframes = 8
 vframes = 10
 
+[node name="ExclamationMark" parent="." node_paths=PackedStringArray("target_detector") instance=ExtResource("2_n4m1l")]
+target_detector = NodePath("../TargetDetector")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_wh4xf")
 }
 autoplay = "idle"
+
+[node name="TargetDetector" parent="." instance=ExtResource("3_vgd13")]
+collision_mask = 1

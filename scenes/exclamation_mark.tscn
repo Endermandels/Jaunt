@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdgqieen0fywu"]
+
+[ext_resource type="Texture2D" uid="uid://bslcdxr6beewq" path="res://assets/exclamation-mark.png" id="1_v5gxs"]
+[ext_resource type="Script" path="res://scripts/exclamation_mark.gd" id="2_rallm"]
+
+[node name="ExclamationMark" type="Sprite2D"]
+position = Vector2(0, -15)
+texture = ExtResource("1_v5gxs")
+script = ExtResource("2_rallm")

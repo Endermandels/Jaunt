@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://vsqnn81eosqw"]
+[gd_scene load_steps=11 format=3 uid="uid://vsqnn81eosqw"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_quawc"]
 [ext_resource type="Texture2D" uid="uid://bndhuvvns524u" path="res://assets/Adventurer Female Sprite Sheet.png" id="2_8l20m"]
@@ -76,7 +76,10 @@ _data = {
 "run": SubResource("Animation_yfieu")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_nuwem"]
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input_component", "movement_component", "animation_component")]
+collision_mask = 0
 script = ExtResource("1_quawc")
 input_component = NodePath("InputComponent")
 movement_component = NodePath("MovementComponent")
@@ -106,3 +109,6 @@ libraries = {
 "": SubResource("AnimationLibrary_oj8ak")
 }
 autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nuwem")

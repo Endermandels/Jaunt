@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://boa04w86lhmls"]
+
+[ext_resource type="Script" path="res://components/target_detector.gd" id="1_h88po"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ro30e"]
+radius = 104.29
+
+[node name="TargetDetector" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_h88po")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ro30e")
