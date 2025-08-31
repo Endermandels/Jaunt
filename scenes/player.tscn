@@ -84,6 +84,7 @@ animation_component = NodePath("AnimationComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_8l20m")
+offset = Vector2(0, -16)
 hframes = 9
 vframes = 7
 frame = 9
