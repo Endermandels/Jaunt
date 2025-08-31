@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://d0kqbjlgyy4cb"]
+[gd_scene load_steps=10 format=3 uid="uid://d0kqbjlgyy4cb"]
 
 [ext_resource type="Texture2D" uid="uid://cuvitccobx3pf" path="res://assets/Cat Sprite Sheet.png" id="1_fs1jx"]
+[ext_resource type="Script" path="res://scripts/animals/animal.gd" id="1_h6sjw"]
 [ext_resource type="PackedScene" uid="uid://cdgqieen0fywu" path="res://scenes/exclamation_mark.tscn" id="2_n4m1l"]
 [ext_resource type="PackedScene" uid="uid://boa04w86lhmls" path="res://components/target_detector.tscn" id="3_vgd13"]
+[ext_resource type="PackedScene" uid="uid://c47fxqx1tpaxl" path="res://components/ai_component.tscn" id="4_hwiaj"]
+[ext_resource type="PackedScene" uid="uid://dxa78ih8w5531" path="res://components/movement_component.tscn" id="5_sbm0i"]
 
 [sub_resource type="Animation" id="Animation_0tkq5"]
 resource_name = "idle"
@@ -43,7 +46,10 @@ _data = {
 "idle": SubResource("Animation_0tkq5")
 }
 
-[node name="Cat" type="CharacterBody2D"]
+[node name="Cat" type="CharacterBody2D" node_paths=PackedStringArray("ai_component", "movement_component")]
+script = ExtResource("1_h6sjw")
+ai_component = NodePath("AiComponent")
+movement_component = NodePath("MovementComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_fs1jx")
@@ -62,3 +68,9 @@ autoplay = "idle"
 
 [node name="TargetDetector" parent="." instance=ExtResource("3_vgd13")]
 collision_mask = 1
+
+[node name="AiComponent" parent="." node_paths=PackedStringArray("target_detector", "exclamation_mark") instance=ExtResource("4_hwiaj")]
+target_detector = NodePath("../TargetDetector")
+exclamation_mark = NodePath("../ExclamationMark")
+
+[node name="MovementComponent" parent="." instance=ExtResource("5_sbm0i")]

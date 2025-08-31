@@ -94,8 +94,7 @@ frame = 9
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="InputComponent" parent="." node_paths=PackedStringArray("body") instance=ExtResource("3_47x5d")]
-body = NodePath("..")
+[node name="InputComponent" parent="." instance=ExtResource("3_47x5d")]
 
 [node name="MovementComponent" parent="." instance=ExtResource("4_e2qbd")]
 speed = 180

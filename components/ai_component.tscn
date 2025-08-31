@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c47fxqx1tpaxl"]
+
+[ext_resource type="Script" path="res://components/ai_component.gd" id="1_oqxpu"]
+
+[node name="AiComponent" type="Node"]
+script = ExtResource("1_oqxpu")
