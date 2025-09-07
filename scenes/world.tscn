@@ -271,4 +271,7 @@ y_sort_enabled = true
 [node name="Player" parent="Entities" instance=ExtResource("2_x8w3i")]
 
 [node name="Cat" parent="Entities" instance=ExtResource("3_hvp4k")]
-position = Vector2(126, -109)
+position = Vector2(130, -79)
+
+[node name="Cat2" parent="Entities" instance=ExtResource("3_hvp4k")]
+position = Vector2(-147, -24)

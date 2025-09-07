@@ -81,14 +81,14 @@ vframes = 10
 [node name="ExclamationMark" parent="." node_paths=PackedStringArray("target_detector") instance=ExtResource("2_n4m1l")]
 target_detector = NodePath("../TargetDetector")
 
+[node name="TargetDetector" parent="." instance=ExtResource("3_vgd13")]
+collision_mask = 1
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_wh4xf")
 }
 autoplay = "idle"
-
-[node name="TargetDetector" parent="." instance=ExtResource("3_vgd13")]
-collision_mask = 1
 
 [node name="AiComponent" parent="." node_paths=PackedStringArray("target_detector", "exclamation_mark") instance=ExtResource("4_hwiaj")]
 target_detector = NodePath("../TargetDetector")

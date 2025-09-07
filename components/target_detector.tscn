@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://components/target_detector.gd" id="1_h88po"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ro30e"]
+resource_local_to_scene = true
 radius = 104.29
 
 [node name="TargetDetector" type="Area2D" node_paths=PackedStringArray("collision_shape")]

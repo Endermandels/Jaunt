@@ -18,7 +18,6 @@ func handle_artificial_input(body: Node2D) -> void:
     if tamed and target_detector.target and body.global_position.distance_to(target_detector.target.global_position) > close_enough_range:
         input_vector = body.global_position.direction_to(target_detector.target.global_position)
     else:
-        print(input_vector)
         input_vector = Vector2.ZERO
 
 func _process(_delta: float) -> void:
