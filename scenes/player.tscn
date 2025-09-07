@@ -1,11 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://vsqnn81eosqw"]
+[gd_scene load_steps=13 format=3 uid="uid://vsqnn81eosqw"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_quawc"]
 [ext_resource type="Texture2D" uid="uid://bndhuvvns524u" path="res://assets/Adventurer Female Sprite Sheet.png" id="2_8l20m"]
+[ext_resource type="Texture2D" uid="uid://b6pygm4mvmugr" path="res://assets/medium-shadow.png" id="3_16up6"]
 [ext_resource type="PackedScene" uid="uid://5itqmwag64ax" path="res://components/input_component.tscn" id="3_47x5d"]
 [ext_resource type="PackedScene" uid="uid://dxa78ih8w5531" path="res://components/movement_component.tscn" id="4_e2qbd"]
 [ext_resource type="PackedScene" uid="uid://s4fh6g7sht2d" path="res://components/animation_component.tscn" id="5_4g08v"]
 [ext_resource type="PackedScene" uid="uid://bj1ylpkx2y1ff" path="res://components/soft_collision.tscn" id="6_xp03x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nuwem"]
 
 [sub_resource type="Animation" id="Animation_tir4e"]
 length = 0.001
@@ -77,8 +80,6 @@ _data = {
 "run": SubResource("Animation_yfieu")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nuwem"]
-
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("input_component", "movement_component", "animation_component")]
 collision_mask = 0
 script = ExtResource("1_quawc")
@@ -86,14 +87,28 @@ input_component = NodePath("InputComponent")
 movement_component = NodePath("MovementComponent")
 animation_component = NodePath("AnimationComponent")
 
+[node name="Shadow" type="Sprite2D" parent="."]
+texture = ExtResource("3_16up6")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_8l20m")
-offset = Vector2(0, -16)
+offset = Vector2(3, -14)
 hframes = 9
 vframes = 7
 frame = 9
 
+[node name="SoftCollision" parent="." instance=ExtResource("6_xp03x")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nuwem")
+
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oj8ak")
+}
+autoplay = "idle"
 
 [node name="InputComponent" parent="." instance=ExtResource("3_47x5d")]
 
@@ -103,14 +118,3 @@ speed = 180
 [node name="AnimationComponent" parent="." node_paths=PackedStringArray("sprite", "anim_player") instance=ExtResource("5_4g08v")]
 sprite = NodePath("../Sprite2D")
 anim_player = NodePath("../AnimationPlayer")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_oj8ak")
-}
-autoplay = "idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_nuwem")
-
-[node name="SoftCollision" parent="." instance=ExtResource("6_xp03x")]
