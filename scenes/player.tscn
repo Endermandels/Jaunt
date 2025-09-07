@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://vsqnn81eosqw"]
+[gd_scene load_steps=12 format=3 uid="uid://vsqnn81eosqw"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_quawc"]
 [ext_resource type="Texture2D" uid="uid://bndhuvvns524u" path="res://assets/Adventurer Female Sprite Sheet.png" id="2_8l20m"]
 [ext_resource type="PackedScene" uid="uid://5itqmwag64ax" path="res://components/input_component.tscn" id="3_47x5d"]
 [ext_resource type="PackedScene" uid="uid://dxa78ih8w5531" path="res://components/movement_component.tscn" id="4_e2qbd"]
 [ext_resource type="PackedScene" uid="uid://s4fh6g7sht2d" path="res://components/animation_component.tscn" id="5_4g08v"]
+[ext_resource type="PackedScene" uid="uid://bj1ylpkx2y1ff" path="res://components/soft_collision.tscn" id="6_xp03x"]
 
 [sub_resource type="Animation" id="Animation_tir4e"]
 length = 0.001
@@ -111,3 +112,5 @@ autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_nuwem")
+
+[node name="SoftCollision" parent="." instance=ExtResource("6_xp03x")]
