@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vug0jx5nnb46"
-path="res://.godot/imported/small-shadow.png-3665363f60695fc49115d5d4db1c899b.ctex"
+uid="uid://cuvitccobx3pf"
+path="res://.godot/imported/Cat Sprite Sheet.png-52eca850ec368c57aae150ad14d484bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/small-shadow.png"
-dest_files=["res://.godot/imported/small-shadow.png-3665363f60695fc49115d5d4db1c899b.ctex"]
+source_file="res://assets/animals/Cat Sprite Sheet.png"
+dest_files=["res://.godot/imported/Cat Sprite Sheet.png-52eca850ec368c57aae150ad14d484bd.ctex"]
 
 [params]
 

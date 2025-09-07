@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://d0kqbjlgyy4cb"]
 
-[ext_resource type="Texture2D" uid="uid://cuvitccobx3pf" path="res://assets/Cat Sprite Sheet.png" id="1_fs1jx"]
+[ext_resource type="Texture2D" uid="uid://cuvitccobx3pf" path="res://assets/animals/Cat Sprite Sheet.png" id="1_fs1jx"]
 [ext_resource type="Script" path="res://scripts/animals/animal.gd" id="1_h6sjw"]
+[ext_resource type="Texture2D" uid="uid://bcmm48w44nvxr" path="res://assets/shadow-spritesheet.png" id="2_kv2yw"]
 [ext_resource type="PackedScene" uid="uid://cdgqieen0fywu" path="res://scenes/exclamation_mark.tscn" id="2_n4m1l"]
-[ext_resource type="Texture2D" uid="uid://b6pygm4mvmugr" path="res://assets/medium-shadow.png" id="2_rso2d"]
 [ext_resource type="PackedScene" uid="uid://boa04w86lhmls" path="res://components/target_detector.tscn" id="3_vgd13"]
 [ext_resource type="PackedScene" uid="uid://c47fxqx1tpaxl" path="res://components/ai_component.tscn" id="4_hwiaj"]
 [ext_resource type="PackedScene" uid="uid://bj1ylpkx2y1ff" path="res://components/soft_collision.tscn" id="5_as8ho"]
@@ -76,7 +76,9 @@ animation_component = NodePath("AnimationComponent")
 soft_collision = NodePath("SoftCollision")
 
 [node name="Shadow" type="Sprite2D" parent="."]
-texture = ExtResource("2_rso2d")
+texture = ExtResource("2_kv2yw")
+vframes = 4
+frame = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_fs1jx")

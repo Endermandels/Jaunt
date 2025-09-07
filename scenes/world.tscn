@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://bc2fa7g6nkhmp"]
+[gd_scene load_steps=8 format=4 uid="uid://bc2fa7g6nkhmp"]
 
 [ext_resource type="Texture2D" uid="uid://c7xa6lrhycead" path="res://assets/Forest Tileset v2.png" id="1_ic64a"]
 [ext_resource type="PackedScene" uid="uid://vsqnn81eosqw" path="res://scenes/player.tscn" id="2_x8w3i"]
 [ext_resource type="PackedScene" uid="uid://d0kqbjlgyy4cb" path="res://scenes/animals/cat.tscn" id="3_hvp4k"]
+[ext_resource type="PackedScene" uid="uid://do3meh5lihe7m" path="res://scenes/animals/fox.tscn" id="4_2blbt"]
+[ext_resource type="PackedScene" uid="uid://b06ps0q7c5tat" path="res://scenes/animals/ferret.tscn" id="5_aw28p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mybht"]
 texture = ExtResource("1_ic64a")
@@ -272,3 +274,8 @@ y_sort_enabled = true
 
 [node name="Cat" parent="Entities" instance=ExtResource("3_hvp4k")]
 position = Vector2(-141, -35)
+
+[node name="Fox" parent="Entities" instance=ExtResource("4_2blbt")]
+position = Vector2(100, -51)
+
+[node name="Ferret" parent="Entities" instance=ExtResource("5_aw28p")]

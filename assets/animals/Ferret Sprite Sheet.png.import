@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6pygm4mvmugr"
-path="res://.godot/imported/medium-shadow.png-2d3733e0eabde959826382584a245ed7.ctex"
+uid="uid://dcddhlgm2012u"
+path="res://.godot/imported/Ferret Sprite Sheet.png-aa33c11897fcdb7992f6c4bbcbb6312c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/medium-shadow.png"
-dest_files=["res://.godot/imported/medium-shadow.png-2d3733e0eabde959826382584a245ed7.ctex"]
+source_file="res://assets/animals/Ferret Sprite Sheet.png"
+dest_files=["res://.godot/imported/Ferret Sprite Sheet.png-aa33c11897fcdb7992f6c4bbcbb6312c.ctex"]
 
 [params]
 
