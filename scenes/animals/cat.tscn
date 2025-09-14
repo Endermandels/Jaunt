@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d0kqbjlgyy4cb"]
+[gd_scene load_steps=15 format=3 uid="uid://d0kqbjlgyy4cb"]
 
 [ext_resource type="Texture2D" uid="uid://cuvitccobx3pf" path="res://assets/animals/Cat Sprite Sheet.png" id="1_fs1jx"]
 [ext_resource type="Script" path="res://scripts/animals/animal.gd" id="1_h6sjw"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bj1ylpkx2y1ff" path="res://components/soft_collision.tscn" id="5_as8ho"]
 [ext_resource type="PackedScene" uid="uid://dxa78ih8w5531" path="res://components/movement_component.tscn" id="5_sbm0i"]
 [ext_resource type="PackedScene" uid="uid://s4fh6g7sht2d" path="res://components/animation_component.tscn" id="7_4eic4"]
+[ext_resource type="AudioStream" uid="uid://bg6lrcsaql6c1" path="res://assets/animal_join.wav" id="10_0vu1s"]
 
 [sub_resource type="Animation" id="Animation_rhpfh"]
 length = 0.001
@@ -100,12 +101,17 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="AiComponent" parent="." node_paths=PackedStringArray("target_detector", "exclamation_mark") instance=ExtResource("4_hwiaj")]
+[node name="AiComponent" parent="." node_paths=PackedStringArray("target_detector", "exclamation_mark", "tame_sfx") instance=ExtResource("4_hwiaj")]
 target_detector = NodePath("../TargetDetector")
 exclamation_mark = NodePath("../ExclamationMark")
+tame_sfx = NodePath("../TameSFX")
 
 [node name="MovementComponent" parent="." instance=ExtResource("5_sbm0i")]
 
 [node name="AnimationComponent" parent="." node_paths=PackedStringArray("sprite", "anim_player") instance=ExtResource("7_4eic4")]
 sprite = NodePath("../Sprite2D")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="TameSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_0vu1s")
+volume_db = 5.032

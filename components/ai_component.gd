@@ -8,6 +8,7 @@ class_name AIComponent
 @export_group("External Nodes")
 @export var target_detector: TargetDetector
 @export var exclamation_mark: ExclamationMark
+@export var tame_sfx: AudioStreamPlayer2D
 
 var tamed: bool = false ## Whether this animal is tamed
 var input_vector: Vector2 = Vector2.ZERO ## Normalized input vector for moving
@@ -25,3 +26,5 @@ func _process(_delta: float) -> void:
         tamed = true
         exclamation_mark.disable()
         target_detector.set_detection_radius(follow_range)
+        tame_sfx.pitch_scale = randf_range(1, 2)
+        tame_sfx.play()
