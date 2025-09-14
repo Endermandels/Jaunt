@@ -279,5 +279,6 @@ y_sort_enabled = true
 position = Vector2(-141, -35)
 
 [node name="AnimalSpawner" parent="Entities" node_paths=PackedStringArray("player", "spawn_node") instance=ExtResource("4_aewmm")]
+spawn_chance = 0.31
 player = NodePath("../Player")
 spawn_node = NodePath("..")

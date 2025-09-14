@@ -5,10 +5,10 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_w1q4k"]
 radius = 389.082
 
-[node name="AnimalSpawner" type="Node2D" node_paths=PackedStringArray("spawn_area", "timer")]
+[node name="AnimalSpawner" type="Node2D" node_paths=PackedStringArray("spawn_area", "spawn_interval")]
 script = ExtResource("1_i73ye")
 spawn_area = NodePath("Area2D/CollisionShape2D")
-timer = NodePath("SpawnInterval")
+spawn_interval = NodePath("SpawnInterval")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
