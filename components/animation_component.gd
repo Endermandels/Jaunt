@@ -8,6 +8,9 @@ class_name AnimationComponent
 @export var sprite: Sprite2D
 @export var anim_player: AnimationPlayer
 
+func _ready() -> void:
+    sprite.flip_h = randi_range(0, 1) # Randomize facing direction on spawn
+
 func handle_facing_horizontal_direction(direction: float, offset_x: float = 0.0) -> void:
     """ 
     direction 1 = Right, direction -1 = Left, direction 0 = not moving horizontally
