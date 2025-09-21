@@ -137,6 +137,8 @@ walk_sfx = NodePath("../WalkSFX")
 [node name="WalkSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_uh337")
 volume_db = -15.0
+max_distance = 600.0
+attenuation = 2.0
 
 [node name="TameSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_r8v1q")

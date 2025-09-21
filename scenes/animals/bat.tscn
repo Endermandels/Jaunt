@@ -1,0 +1,156 @@
+[gd_scene load_steps=17 format=3 uid="uid://brdao3osq37m3"]
+
+[ext_resource type="Script" path="res://scripts/animals/animal.gd" id="1_2tf74"]
+[ext_resource type="Texture2D" uid="uid://bcmm48w44nvxr" path="res://assets/shadow-spritesheet.png" id="2_b8vvd"]
+[ext_resource type="Texture2D" uid="uid://cmiicot8oysxh" path="res://assets/animals/Bat_Sprites.png" id="3_4hjq2"]
+[ext_resource type="PackedScene" uid="uid://cdgqieen0fywu" path="res://scenes/exclamation_mark.tscn" id="4_t7i0v"]
+[ext_resource type="PackedScene" uid="uid://boa04w86lhmls" path="res://components/target_detector.tscn" id="5_x8q48"]
+[ext_resource type="PackedScene" uid="uid://bj1ylpkx2y1ff" path="res://components/soft_collision.tscn" id="6_nv80p"]
+[ext_resource type="PackedScene" uid="uid://c47fxqx1tpaxl" path="res://components/ai_component.tscn" id="7_fbcdo"]
+[ext_resource type="PackedScene" uid="uid://dxa78ih8w5531" path="res://components/movement_component.tscn" id="8_honwb"]
+[ext_resource type="PackedScene" uid="uid://s4fh6g7sht2d" path="res://components/animation_component.tscn" id="9_baap2"]
+[ext_resource type="PackedScene" uid="uid://dhw6i117lbb7a" path="res://components/sfx_handler.tscn" id="10_ksldm"]
+[ext_resource type="AudioStream" uid="uid://bg6lrcsaql6c1" path="res://assets/animal_join.wav" id="11_k6o1r"]
+[ext_resource type="AudioStream" uid="uid://bagdnnogctayi" path="res://assets/bat_walk.wav" id="12_nnol7"]
+
+[sub_resource type="Animation" id="Animation_rhpfh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0tkq5"]
+resource_name = "idle"
+length = 0.416675
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SFXHandler")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_walk_sfx"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_k01ec"]
+resource_name = "run"
+length = 0.416675
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SFXHandler")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_walk_sfx"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wh4xf"]
+_data = {
+"RESET": SubResource("Animation_rhpfh"),
+"idle": SubResource("Animation_0tkq5"),
+"run": SubResource("Animation_k01ec")
+}
+
+[node name="Bat" type="CharacterBody2D" node_paths=PackedStringArray("ai_component", "movement_component", "animation_component", "soft_collision")]
+script = ExtResource("1_2tf74")
+ai_component = NodePath("AiComponent")
+movement_component = NodePath("MovementComponent")
+animation_component = NodePath("AnimationComponent")
+soft_collision = NodePath("SoftCollision")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+texture = ExtResource("2_b8vvd")
+vframes = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_4hjq2")
+offset = Vector2(0, -16)
+hframes = 5
+vframes = 3
+
+[node name="ExclamationMark" parent="." node_paths=PackedStringArray("target_detector") instance=ExtResource("4_t7i0v")]
+position = Vector2(0, -32)
+target_detector = NodePath("../TargetDetector")
+
+[node name="TargetDetector" parent="." instance=ExtResource("5_x8q48")]
+collision_mask = 1
+
+[node name="SoftCollision" parent="." instance=ExtResource("6_nv80p")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wh4xf")
+}
+autoplay = "idle"
+
+[node name="AiComponent" parent="." node_paths=PackedStringArray("target_detector", "exclamation_mark", "tame_sfx") instance=ExtResource("7_fbcdo")]
+target_detector = NodePath("../TargetDetector")
+exclamation_mark = NodePath("../ExclamationMark")
+tame_sfx = NodePath("../TameSFX")
+
+[node name="MovementComponent" parent="." instance=ExtResource("8_honwb")]
+
+[node name="AnimationComponent" parent="." node_paths=PackedStringArray("sprite", "anim_player") instance=ExtResource("9_baap2")]
+sprite = NodePath("../Sprite2D")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="SFXHandler" parent="." node_paths=PackedStringArray("walk_sfx") instance=ExtResource("10_ksldm")]
+walk_sfx = NodePath("../WalkSFX")
+
+[node name="TameSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_k6o1r")
+volume_db = 5.032
+
+[node name="WalkSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_nnol7")
+volume_db = -20.0
+max_distance = 600.0
+attenuation = 2.07053

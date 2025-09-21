@@ -10,6 +10,7 @@ const ANIMAL_SCENES = [
     preload("res://scenes/animals/ferret.tscn"),
     preload("res://scenes/animals/fox.tscn"),
     preload("res://scenes/animals/porcupine.tscn"),
+    preload("res://scenes/animals/bat.tscn"),
     preload("res://scenes/animals/squirrel.tscn")
 ]
 
