@@ -11,6 +11,8 @@ func _unhandled_key_input(event: InputEvent) -> void:
     if event.is_action_pressed("interact"):
         interact_pressed = true
         get_tree().create_timer(0.05).timeout.connect(func (): interact_pressed = false)
+    if event.is_action_pressed("ui_cancel"):
+        get_tree().quit()
 
 func _process(_delta: float) -> void:
     var h_dir: float = Input.get_axis("move_left", "move_right");
