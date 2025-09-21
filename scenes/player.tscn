@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://vsqnn81eosqw"]
+[gd_scene load_steps=15 format=3 uid="uid://vsqnn81eosqw"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_quawc"]
 [ext_resource type="Texture2D" uid="uid://bndhuvvns524u" path="res://assets/Adventurer Female Sprite Sheet.png" id="2_8l20m"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dxa78ih8w5531" path="res://components/movement_component.tscn" id="4_e2qbd"]
 [ext_resource type="PackedScene" uid="uid://s4fh6g7sht2d" path="res://components/animation_component.tscn" id="5_4g08v"]
 [ext_resource type="PackedScene" uid="uid://bj1ylpkx2y1ff" path="res://components/soft_collision.tscn" id="6_xp03x"]
+[ext_resource type="PackedScene" uid="uid://dhw6i117lbb7a" path="res://components/sfx_handler.tscn" id="8_ovs0l"]
+[ext_resource type="AudioStream" uid="uid://d2wo3agpcodfn" path="res://assets/walk.wav" id="9_0vh0w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nuwem"]
 
@@ -72,6 +74,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1), Vector2i(4, 1), Vector2i(5, 1), Vector2i(6, 1), Vector2i(7, 1)]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SFXHandler")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_walk_sfx"
+}, {
+"args": [],
+"method": &"play_walk_sfx"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oj8ak"]
 _data = {
@@ -120,3 +139,10 @@ speed = 180
 [node name="AnimationComponent" parent="." node_paths=PackedStringArray("sprite", "anim_player") instance=ExtResource("5_4g08v")]
 sprite = NodePath("../Sprite2D")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="SFXHandler" parent="." node_paths=PackedStringArray("walk_sfx") instance=ExtResource("8_ovs0l")]
+walk_sfx = NodePath("../WalkSFX")
+
+[node name="WalkSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_0vh0w")
+volume_db = -4.936

@@ -5,10 +5,12 @@ class_name AnimalSpawner
 Whenever the player moves, randomly determine when to spawn an animal by checking the value of a random number every X second interval.
 Spawn animals at a random location within Y units of the player but not in the player's camera view.
 '''
-
-const CatScene = preload("res://scenes/animals/cat.tscn")
-const FerretScene = preload("res://scenes/animals/ferret.tscn")
-const FoxScene = preload("res://scenes/animals/fox.tscn")
+const ANIMAL_SCENES = [
+    preload("res://scenes/animals/cat.tscn"),
+    preload("res://scenes/animals/ferret.tscn"),
+    preload("res://scenes/animals/fox.tscn"),
+    preload("res://scenes/animals/squirrel.tscn")
+]
 
 @export_group("Settings")
 @export_range(0, 1) var spawn_chance: float = 0.1 ## Percentage chance of spawning an animal on successful spawn check
@@ -24,17 +26,6 @@ const FoxScene = preload("res://scenes/animals/fox.tscn")
 
 var min_dist: float = 0.0
 
-static func get_random_animal() -> PackedScene:
-    '''
-    Returns a random Animal instance.
-    '''
-    var rnd = randi_range(0, 2)
-    if rnd == 1:
-        return FerretScene
-    if rnd == 2:
-        return FoxScene
-    return CatScene
-
 func _ready() -> void:
     var vrect = get_viewport_rect()
     min_dist = vrect.get_center().distance_to(vrect.position) + 16 * max_num_spawned # Extra padding
@@ -46,7 +37,7 @@ func spawn_animal() -> void:
     var angle = randf_range(0, 2*PI)
     var dir = Vector2(cos(angle), sin(angle))
     var pos = global_position + dir * dist
-    var animal_scene = get_random_animal()
+    var animal_scene = ANIMAL_SCENES[randi_range(0, ANIMAL_SCENES.size() - 1)]
 
     var rnd_num = clampi(randfn(0.0, 2.0), 0, max_num_spawned)
 
