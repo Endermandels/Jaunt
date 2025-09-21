@@ -3,10 +3,13 @@ class_name AnimationComponent
 
 @export_group("Settings")
 @export var idle_tolerance: float = 15.0 ## How close the body's velocity length should be to zero to switch to idle
+@export var loop_idle: bool = true ## Whether to loop the idle animation
 
 @export_group("External Nodes")
 @export var sprite: Sprite2D
 @export var anim_player: AnimationPlayer
+
+var idle_started = false
 
 func _ready() -> void:
     sprite.flip_h = randi_range(0, 1) # Randomize facing direction on spawn
@@ -26,5 +29,9 @@ func handle_facing_horizontal_direction(direction: float, offset_x: float = 0.0)
 func handle_movement_animation(body: CharacterBody2D) -> void:
     if body.velocity.length() > idle_tolerance:
         anim_player.play("run")
-    else:
+        idle_started = false
+    elif loop_idle:
         anim_player.play("idle")
+    elif not idle_started:
+        anim_player.play("idle")
+        idle_started = true

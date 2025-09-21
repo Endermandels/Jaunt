@@ -124,6 +124,7 @@ tame_sfx = NodePath("../TameSFX")
 [node name="MovementComponent" parent="." instance=ExtResource("8_bfj6s")]
 
 [node name="AnimationComponent" parent="." node_paths=PackedStringArray("sprite", "anim_player") instance=ExtResource("9_ycbn8")]
+loop_idle = false
 sprite = NodePath("../Sprite2D")
 anim_player = NodePath("../AnimationPlayer")
 
