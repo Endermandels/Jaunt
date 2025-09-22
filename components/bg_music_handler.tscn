@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1086qowa3h5g"]
+
+[ext_resource type="Script" path="res://components/bg_music_handler.gd" id="1_ssce0"]
+[ext_resource type="AudioStream" uid="uid://c2awhphvyaqy6" path="res://assets/bg_music_1.mp3" id="2_821q5"]
+[ext_resource type="AudioStream" uid="uid://bup46syalm6p6" path="res://assets/bg_music_2.mp3" id="3_tcsxi"]
+
+[node name="BGMusicHandler" type="Node" node_paths=PackedStringArray("bg_music_nodes")]
+script = ExtResource("1_ssce0")
+bg_music_nodes = [NodePath("BGMusic1"), NodePath("BGMusic2")]
+
+[node name="BGMusic1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_821q5")
+
+[node name="BGMusic2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_tcsxi")
