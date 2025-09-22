@@ -21,9 +21,13 @@ func handle_facing_horizontal_direction(direction: float, offset_x: float = 0.0)
     """
     if direction < 0:
         sprite.flip_h = true
-        sprite.offset.x = -offset_x
     elif direction > 0:
         sprite.flip_h = false
+
+    # Handles the spawn case for being flipped
+    if sprite.flip_h:
+        sprite.offset.x = -offset_x
+    else:
         sprite.offset.x = offset_x
 
 func handle_movement_animation(body: CharacterBody2D) -> void:
