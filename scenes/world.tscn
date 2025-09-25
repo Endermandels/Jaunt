@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=4 uid="uid://bc2fa7g6nkhmp"]
+[gd_scene load_steps=8 format=4 uid="uid://bc2fa7g6nkhmp"]
 
 [ext_resource type="Texture2D" uid="uid://c7xa6lrhycead" path="res://assets/Forest Tileset v2.png" id="1_ic64a"]
 [ext_resource type="PackedScene" uid="uid://vsqnn81eosqw" path="res://scenes/player.tscn" id="2_x8w3i"]
 [ext_resource type="PackedScene" uid="uid://d0kqbjlgyy4cb" path="res://scenes/animals/cat.tscn" id="3_hvp4k"]
-[ext_resource type="PackedScene" uid="uid://hsi57ao1h5f" path="res://scenes/animals/skunk.tscn" id="4_0sgwt"]
 [ext_resource type="PackedScene" uid="uid://ch3ocqhwtja15" path="res://scenes/animal_spawner.tscn" id="4_aewmm"]
 [ext_resource type="PackedScene" uid="uid://c1086qowa3h5g" path="res://components/bg_music_handler.tscn" id="5_ltyod"]
 
@@ -279,9 +278,6 @@ y_sort_enabled = true
 
 [node name="Cat" parent="Entities" instance=ExtResource("3_hvp4k")]
 position = Vector2(-141, -35)
-
-[node name="Skunk" parent="Entities" instance=ExtResource("4_0sgwt")]
-position = Vector2(-1, -3613)
 
 [node name="AnimalSpawner" parent="Entities" node_paths=PackedStringArray("player", "spawn_node") instance=ExtResource("4_aewmm")]
 spawn_chance = 0.31
